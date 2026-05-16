@@ -1,0 +1,10 @@
+---
+import cv from '../data/cv.json';
+---
+
+<header class="py-4 px-6 border-b border-gray-100 no-print">
+  <nav class="max-w-3xl mx-auto flex justify-between items-center">
+    <span class="font-semibold">{cv.personal.name}</span>
+    <a href={cv.personal.links.linkedin} target="_blank" class="text-sm text-gray-500 hover:text-gray-900">LinkedIn</a>
+  </nav>
+</header>
