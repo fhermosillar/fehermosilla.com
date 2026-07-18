@@ -419,20 +419,22 @@ details.more[open] .cloud .w5{animation-delay:.42s}
 .mstep,.mprog{display:none}
 @media(max-width:900px){
   .scrolly{display:block}
-  .scrolly-fig{position:sticky;top:52px;z-index:2;background:var(--paper);padding:8px 0 10px;height:auto;display:block;border-bottom:1px solid var(--line)}
+  .scrolly-fig{position:sticky;top:52px;z-index:2;height:calc(100vh - 52px);height:calc(100dvh - 52px);display:flex;flex-direction:column;justify-content:center;padding:0;background:transparent;border-bottom:0}
   .scrolly-fig svg{max-height:32vh!important}
   .scrolly-fig .fig-cap{display:none}
   .mstep{display:block;margin-top:10px;border-left:2px solid var(--accent);padding:2px 0 2px 14px;font-size:14.5px;line-height:1.5;color:var(--ink);min-height:72px}
   .mstep .sk{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);display:block;margin-bottom:4px}
   .mstep b{color:var(--accent)}
-  .mprog{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .mprog .mdots{display:inline-flex;gap:7px}
+  .mprog{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .mprog .mdots{display:inline-flex;gap:8px}
   .mprog .mdots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .3s}
   .mprog .mdots i.on{background:var(--accent)}
-  .mprog .mhint{display:inline-flex;align-items:center;gap:7px;color:var(--accent);transition:opacity .3s}
-  .mprog .chev{animation:mchev 1.5s ease-in-out infinite}
-  .mprog.done .mhint{opacity:0}
-  @keyframes mchev{0%,100%{transform:translateY(-2px);opacity:.45}50%{transform:translateY(3px);opacity:1}}
+  .mprog .mhint{display:inline-flex;flex-direction:column;align-items:center;gap:8px;color:var(--accent);transition:opacity .35s,transform .35s}
+  .mprog .mtxt{display:inline-flex;gap:6px}
+  .mprog .mouse{width:22px;height:34px;border:1.7px solid var(--accent);border-radius:12px;position:relative;opacity:.92}
+  .mprog .mouse::before{content:"";position:absolute;left:50%;top:6px;width:3px;height:7px;border-radius:2px;background:var(--accent);transform:translateX(-50%);animation:mwheel 1.6s cubic-bezier(.45,0,.25,1) infinite}
+  .mprog.done .mhint{opacity:0;transform:translateY(8px);pointer-events:none}
+  @keyframes mwheel{0%{opacity:0;transform:translate(-50%,0)}25%{opacity:1}60%{opacity:1}100%{opacity:0;transform:translate(-50%,13px)}}
   .scrolly-steps{padding:4vh 0 12vh;gap:0}
   .stepcard{height:78vh;margin:0;padding:0;border:0;opacity:0;pointer-events:none}
   .stepcard .sk{display:none}
@@ -696,7 +698,7 @@ c-14 18 -25 41 -25 51 0 10 -6 18 -14 18 -8 0 -21 3 -30 6 -10 4 -19 -5 -29
       <div class="panelbox"><svg id="focos" viewBox="0 0 720 440" width="100%" role="img" aria-label="Cuadrante de focos de mejora"></svg></div>
       <div class="fig-cap"><span class="i-en"><b>Fig. 06 — Where to put the effort.</b> Vertical: mean score (0–100, distinct from the NPS in Fig. 05). Horizontal: each space&rsquo;s weight in overall satisfaction (β).</span><span class="i-es"><b>Fig. 06 — Dónde poner el esfuerzo.</b> Vertical: nota media (0–100, distinta del NPS de la Fig. 05). Horizontal: peso de cada espacio en la satisfacción general (β).</span></div>
     <div class="mstep" aria-hidden="true"></div>
-    <div class="mprog" aria-hidden="true"><span class="mdots"></span><span class="mhint"><span class="i-en">keep scrolling</span><span class="i-es">sigue bajando</span><span class="chev">↓</span></span></div></div>
+    <div class="mprog" aria-hidden="true"><span class="mdots"></span><span class="mhint"><span class="mouse"></span><span class="mtxt"><span class="i-en">keep scrolling</span><span class="i-es">sigue bajando</span></span></span></div></div>
     <div class="scrolly-steps">
       <div class="stepcard" data-fs="0"><span class="sk"><span class="i-en">01 · the map</span><span class="i-es">01 · el mapa</span></span><span class="i-en">Each dot is a matchday space, placed by its mean score and by how much it weighs on overall satisfaction.</span><span class="i-es">Cada punto es un espacio del matchday, ubicado por su nota media y por cuánto pesa en la satisfacción general.</span></div>
       <div class="stepcard" data-fs="1"><span class="sk"><span class="i-en">02 · the score alone misleads</span><span class="i-es">02 · la nota sola engaña</span></span><span class="i-en">Looking only at satisfaction would say &ldquo;fix the <b style="color:var(--accent)">parking</b>&rdquo; — the red dot. But a low score doesn&rsquo;t always move the needle for the whole day.</span><span class="i-es">Mirar solo la satisfacción diría "arregla el <b style="color:var(--accent)">parking</b>" — el punto rojo. Pero una nota baja no siempre mueve la aguja del día completo.</span></div>
@@ -1007,14 +1009,22 @@ c-14 18 -25 41 -25 51 0 10 -6 18 -14 18 -8 0 -21 3 -30 6 -10 4 -19 -5 -29
       var mp=document.querySelector('.scrolly .mprog'), md=mp?mp.querySelector('.mdots'):null;
       if(md){ fsCards.forEach(function(){ md.appendChild(document.createElement('i')); }); md.children[0].classList.add('on'); }
       if(ms && fsCards[0]) ms.innerHTML=fsCards[0].innerHTML;
-      var fio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){
-        fsCards.forEach(function(x){ x.classList.toggle('on', x===e.target); });
-        setFS(+e.target.dataset.fs);
-        if(ms) ms.innerHTML=e.target.innerHTML;
-        var idx=Array.prototype.indexOf.call(fsCards,e.target);
+      var fsIn=new Set();
+      function fsApply(t){
+        fsCards.forEach(function(x){ x.classList.toggle('on', x===t); });
+        setFS(+t.dataset.fs);
+        if(ms) ms.innerHTML=t.innerHTML;
+        var idx=Array.prototype.indexOf.call(fsCards,t);
         if(md){ for(var j=0;j<md.children.length;j++){ md.children[j].classList.toggle('on', j<=idx); } }
         if(mp) mp.classList.toggle('done', idx===fsCards.length-1);
-      } }); },{rootMargin:'-42% 0px -42% 0px',threshold:0});
+      }
+      var fio=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting) fsIn.add(e.target); else fsIn.delete(e.target); });
+        if(!fsIn.size) return;
+        var vmid=window.innerHeight/2, best=null, bd=Infinity;
+        fsIn.forEach(function(c){ var r=c.getBoundingClientRect(); var d=Math.abs((r.top+r.bottom)/2-vmid); if(d<bd){bd=d;best=c;} });
+        if(best) fsApply(best);
+      },{rootMargin:'-42% 0px -42% 0px',threshold:0});
       fsCards.forEach(function(cd){ fio.observe(cd); });
     }
   })();

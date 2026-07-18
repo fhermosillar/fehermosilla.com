@@ -424,20 +424,22 @@ details.more[open] .cloud .w5{animation-delay:.42s}
 .mstep,.mprog{display:none}
 @media(max-width:900px){
   .scrolly{display:block}
-  .scrolly-fig{position:sticky;top:52px;z-index:2;background:var(--paper);padding:8px 0 10px;height:auto;display:block;border-bottom:1px solid var(--line)}
+  .scrolly-fig{position:sticky;top:52px;z-index:2;height:calc(100vh - 52px);height:calc(100dvh - 52px);display:flex;flex-direction:column;justify-content:center;padding:0;background:transparent;border-bottom:0}
   .scrolly-fig svg{max-height:32vh!important}
   .scrolly-fig .fig-cap{display:none}
   .mstep{display:block;margin-top:10px;border-left:2px solid var(--accent);padding:2px 0 2px 14px;font-size:14.5px;line-height:1.5;color:var(--ink);min-height:72px}
   .mstep .sk{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);display:block;margin-bottom:4px}
   .mstep b{color:var(--accent)}
-  .mprog{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .mprog .mdots{display:inline-flex;gap:7px}
+  .mprog{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .mprog .mdots{display:inline-flex;gap:8px}
   .mprog .mdots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .3s}
   .mprog .mdots i.on{background:var(--accent)}
-  .mprog .mhint{display:inline-flex;align-items:center;gap:7px;color:var(--accent);transition:opacity .3s}
-  .mprog .chev{animation:mchev 1.5s ease-in-out infinite}
-  .mprog.done .mhint{opacity:0}
-  @keyframes mchev{0%,100%{transform:translateY(-2px);opacity:.45}50%{transform:translateY(3px);opacity:1}}
+  .mprog .mhint{display:inline-flex;flex-direction:column;align-items:center;gap:8px;color:var(--accent);transition:opacity .35s,transform .35s}
+  .mprog .mtxt{display:inline-flex;gap:6px}
+  .mprog .mouse{width:22px;height:34px;border:1.7px solid var(--accent);border-radius:12px;position:relative;opacity:.92}
+  .mprog .mouse::before{content:"";position:absolute;left:50%;top:6px;width:3px;height:7px;border-radius:2px;background:var(--accent);transform:translateX(-50%);animation:mwheel 1.6s cubic-bezier(.45,0,.25,1) infinite}
+  .mprog.done .mhint{opacity:0;transform:translateY(8px);pointer-events:none}
+  @keyframes mwheel{0%{opacity:0;transform:translate(-50%,0)}25%{opacity:1}60%{opacity:1}100%{opacity:0;transform:translate(-50%,13px)}}
   .scrolly-steps{padding:4vh 0 12vh;gap:0}
   .stepcard{height:78vh;margin:0;padding:0;border:0;opacity:0;pointer-events:none}
   .stepcard .sk{display:none}
@@ -761,7 +763,7 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
     </div>
     <div class="fig-cap"><span class="i-en"><b>Fig. 02 — System behavior</b> (rebuilt from the thesis). Scroll down: the marker walks the curve.</span><span class="i-es"><b>Fig. 02 — Comportamiento del sistema</b> (reconstruido de la tesis). Baja con el scroll: el marcador recorre la curva.</span></div>
     <div class="mstep" aria-hidden="true"></div>
-    <div class="mprog" aria-hidden="true"><span class="mdots"></span><span class="mhint"><span class="i-en">keep scrolling</span><span class="i-es">sigue bajando</span><span class="chev">↓</span></span></div></div>
+    <div class="mprog" aria-hidden="true"><span class="mdots"></span><span class="mhint"><span class="mouse"></span><span class="mtxt"><span class="i-en">keep scrolling</span><span class="i-es">sigue bajando</span></span></span></div></div>
     <div class="scrolly-steps">
       <div class="stepcard" data-i="9"><span class="sk"><span class="i-en">01 · low rate</span><span class="i-es">01 · ritmo bajo</span></span><span class="i-en">With spaced arrivals the plant breathes: grapes cross the system in under an hour and everything harvested is processed the same day.</span><span class="i-es">Con llegadas espaciadas, la planta respira: la uva cruza el sistema en menos de una hora y todo lo cosechado se procesa el mismo día.</span></div>
       <div class="stepcard" data-i="24"><span class="sk"><span class="i-en">02 · the rate climbs</span><span class="i-es">02 · sube el ritmo</span></span><span class="i-en">The system holds. Time in system barely moves — the vats&rsquo; slack absorbs the flow.</span><span class="i-es">El sistema aguanta. El tiempo en sistema apenas se mueve — la holgura de las cubas absorbe el flujo.</span></div>
@@ -952,16 +954,22 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
       var mp=document.querySelector('.scrolly .mprog'), md=mp?mp.querySelector('.mdots'):null;
       if(md){ cards.forEach(function(){ md.appendChild(document.createElement('i')); }); md.children[0].classList.add('on'); }
       if(ms && cards[0]) ms.innerHTML=cards[0].innerHTML;
-      var sio=new IntersectionObserver(function(es){ es.forEach(function(e){
-        if(e.isIntersecting){
-          cards.forEach(function(x){ x.classList.toggle('on', x===e.target); });
-          rng.value=(+e.target.dataset.i)+1; updSim();
-          if(ms) ms.innerHTML=e.target.innerHTML;
-          var idx=Array.prototype.indexOf.call(cards,e.target);
-          if(md){ for(var j=0;j<md.children.length;j++){ md.children[j].classList.toggle('on', j<=idx); } }
-          if(mp) mp.classList.toggle('done', idx===cards.length-1);
-        }
-      }); },{rootMargin:'-42% 0px -42% 0px',threshold:0});
+      var sIn=new Set();
+      function sApply(t){
+        cards.forEach(function(x){ x.classList.toggle('on', x===t); });
+        rng.value=(+t.dataset.i)+1; updSim();
+        if(ms) ms.innerHTML=t.innerHTML;
+        var idx=Array.prototype.indexOf.call(cards,t);
+        if(md){ for(var j=0;j<md.children.length;j++){ md.children[j].classList.toggle('on', j<=idx); } }
+        if(mp) mp.classList.toggle('done', idx===cards.length-1);
+      }
+      var sio=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting) sIn.add(e.target); else sIn.delete(e.target); });
+        if(!sIn.size) return;
+        var vmid=window.innerHeight/2, best=null, bd=Infinity;
+        sIn.forEach(function(c){ var r=c.getBoundingClientRect(); var d=Math.abs((r.top+r.bottom)/2-vmid); if(d<bd){bd=d;best=c;} });
+        if(best) sApply(best);
+      },{rootMargin:'-42% 0px -42% 0px',threshold:0});
       cards.forEach(function(cd){ sio.observe(cd); });
     }
   })();
