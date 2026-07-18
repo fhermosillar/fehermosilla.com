@@ -49,7 +49,7 @@
   .nav .brand .sq{width:10px;height:10px;background:var(--accent)}
   .nav .links{display:flex;gap:26px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#B8B4A6}
   .nav .links a{transition:color .15s}.nav .links a:hover{color:var(--accent)}
-  @media(max-width:680px){.nav .links{display:none}}
+  @media(max-width:680px){.nav .links a{display:none}.nav .links{gap:0}.nav .links .lang{margin-left:0}}
 
   /* hero — dark, impactful */
   .hero{background:var(--ink);color:var(--on-dark);padding:132px 0 64px;position:relative;overflow:hidden}
@@ -158,6 +158,25 @@
   .reveal.in a.xrow:nth-child(2){transition-delay:0s,.09s,.09s}
   .concept-tag{position:fixed;left:14px;bottom:14px;z-index:40;font-family:var(--mono);font-size:11px;color:var(--on-dark);background:var(--accent);padding:6px 10px}
   @media(prefers-reduced-motion:reduce){.hero h1 .w,.reveal,.reveal .xrow,.reveal .sys-cell{opacity:1;transform:none}.scanbar::after{animation:none}.hero::before,.hero h1{transform:none}}
+  /* mobile */
+  @media(max-width:680px){
+    .wrap{padding:0 20px}
+    .hero{padding:100px 0 48px}
+    .hero h1{font-size:clamp(44px,13.5vw,70px)}
+    .hero-top{margin-bottom:36px}
+    .hero-sub{grid-template-columns:1fr;gap:28px;margin-top:34px;padding-top:24px}
+    .hero-card{justify-self:start}
+    section.band{padding:64px 0}
+    .shead{margin-bottom:36px}
+    .systems{padding:64px 0}
+    .xrow{grid-template-columns:1fr;gap:6px;padding:22px 0}
+    .xrow .yr{padding-top:0;order:-1}
+    .xrow .tag{padding-top:8px}
+    .xrow:hover{padding-left:0}
+    .contact{padding:64px 0 80px}
+    .contact .row{margin-top:32px}
+    .contact .kv{text-align:left!important}
+  }
 html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
 .lang{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;margin-left:8px}
 .lang button{background:none;border:0;cursor:pointer;color:#8C887A;font:inherit;padding:2px;text-transform:uppercase;transition:color .15s}
@@ -255,7 +274,7 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
 <section class="contact" id="contact"><div class="wrap">
   <span class="anno" style="color:var(--accent)">06 / 06 — <span class="i-en">contact</span><span class="i-es">contacto</span></span>
   <div style="margin-top:22px"><a class="big" href="mailto:fhermosilla.rz@gmail.com"><span class="i-en">Write me</span><span class="i-es">Escríbeme</span><span class="acc"> →</span></a></div>
-  <p style="margin:26px 0 0;max-width:52ch;color:#B8B4A6;font-size:17px"><span class="i-en">If you work in RevOps, partnerships, sports tech or edtech and want to connect or share ideas — my inbox is open.</span><span class="i-es">Si trabajas en RevOps, partnerships, sports tech o edtech y quieres conectar o intercambiar ideas — mi correo está abierto.</span></p>
+  <p style="margin:26px 0 0;max-width:52ch;color:#B8B4A6;font-size:17px"><span class="i-en">If you're building in RevOps, partnerships, sports tech or edtech, reach out — I'm always up for a good conversation.</span><span class="i-es">Si te mueves en RevOps, partnerships, sports tech o edtech, hablemos — siempre hay ideas que valen un correo.</span></p>
   <div class="row">
     <div class="kv"><a href="mailto:fhermosilla.rz@gmail.com">fhermosilla.rz@gmail.com</a><br><a href="https://www.linkedin.com/in/fehermosilla/">linkedin.com/in/fehermosilla</a></div>
     <div class="kv" style="text-align:right"><span class="i-en">Based in Barcelona</span><span class="i-es">Basado en Barcelona</span><br><span class="i-en">Working in EN · ES</span><span class="i-es">Trabajo en EN · ES</span></div>

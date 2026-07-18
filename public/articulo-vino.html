@@ -421,11 +421,18 @@ details.more[open] .cloud .w5{animation-delay:.42s}
 .stepcard.on{border-color:var(--accent);color:var(--ink)}
 .stepcard .sk{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);display:block;margin-bottom:8px}
 #collapse circle{transition:cx .6s cubic-bezier(.22,1,.36,1),cy .6s cubic-bezier(.22,1,.36,1)}
+.mstep{display:none}
 @media(max-width:900px){
   .scrolly{display:block}
-  .scrolly-fig{position:sticky;top:60px;z-index:2;background:var(--paper);padding:8px 0}
-  .scrolly-steps{padding:6vh 0 18vh;gap:38vh}
-  .stepcard{background:var(--paper);border:1px solid var(--line);border-left:2px solid var(--accent);padding:14px 16px}
+  .scrolly-fig{position:sticky;top:52px;z-index:2;background:var(--paper);padding:8px 0 10px;height:auto;display:block;border-bottom:1px solid var(--line)}
+  .scrolly-fig svg{max-height:32vh!important}
+  .scrolly-fig .fig-cap{display:none}
+  .mstep{display:block;margin-top:10px;border-left:2px solid var(--accent);padding:2px 0 2px 14px;font-size:14.5px;line-height:1.5;color:var(--ink);min-height:72px}
+  .mstep .sk{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);display:block;margin-bottom:4px}
+  .mstep b{color:var(--accent)}
+  .scrolly-steps{padding:4vh 0 12vh;gap:0}
+  .stepcard{height:78vh;margin:0;padding:0;border:0;opacity:0;pointer-events:none}
+  .stepcard .sk{display:none}
 }
 /* ── Blueprint dark hero ── */
 .bp-hero{background:#17160F;color:#F4F2EA;padding:118px 0 0;position:relative;overflow:hidden}
@@ -471,6 +478,24 @@ details.more[open] .cloud .w5{animation-delay:.42s}
 .toc .dt{width:8px;height:8px;border:1px solid var(--muted);background:transparent;transition:.25s;flex:none}
 .toc a.on .dt{background:var(--accent);border-color:var(--accent)}
 @media(max-width:1180px){.toc{display:none}}
+@media(max-width:680px){
+  .wrap{padding:0 20px}
+  .bp-hero{padding:92px 0 0}
+  .bp-hero h1{font-size:clamp(32px,9.5vw,48px)}
+  .bp-hero .case-dek{font-size:17px}
+  .bp-metrics{margin-top:36px}
+  .top .wrap{gap:10px}
+  .top .wrap>a.home{font-size:14px!important}
+  .top nav{gap:10px!important}
+  .top nav a.home{font-size:10px}
+  .panelbox{overflow-x:auto}
+  .verdict th,.verdict td{font-size:12px;padding:8px 6px}
+  .bp-foot{padding:60px 0 0;margin-top:64px}
+  .bp-foot .rowc .kv{text-align:left!important}
+  .bp-foot .big{font-size:clamp(30px,8.5vw,44px)}
+  .pull blockquote{font-size:clamp(22px,6.8vw,30px)}
+  .bridge p{font-size:19px}
+}
 html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
 .langg{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.08em}
 .langg button{background:none;border:0;cursor:pointer;color:#B8B4A6;font:inherit;padding:2px;text-transform:uppercase;transition:color .15s}
@@ -727,7 +752,7 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
       <div class="simrow"><span><span class="i-en">arrival rate</span><span class="i-es">ritmo de llegadas</span></span><input type="range" id="simRange" min="1" max="45" value="10" aria-label="Ritmo de llegadas" /><span class="out" id="simOut"></span></div>
     </div>
     <div class="fig-cap"><span class="i-en"><b>Fig. 02 — System behavior</b> (rebuilt from the thesis). Scroll down: the marker walks the curve.</span><span class="i-es"><b>Fig. 02 — Comportamiento del sistema</b> (reconstruido de la tesis). Baja con el scroll: el marcador recorre la curva.</span></div>
-    </div>
+    <div class="mstep" aria-hidden="true"></div></div>
     <div class="scrolly-steps">
       <div class="stepcard" data-i="9"><span class="sk"><span class="i-en">01 · low rate</span><span class="i-es">01 · ritmo bajo</span></span><span class="i-en">With spaced arrivals the plant breathes: grapes cross the system in under an hour and everything harvested is processed the same day.</span><span class="i-es">Con llegadas espaciadas, la planta respira: la uva cruza el sistema en menos de una hora y todo lo cosechado se procesa el mismo día.</span></div>
       <div class="stepcard" data-i="24"><span class="sk"><span class="i-en">02 · the rate climbs</span><span class="i-es">02 · sube el ritmo</span></span><span class="i-en">The system holds. Time in system barely moves — the vats&rsquo; slack absorbs the flow.</span><span class="i-es">El sistema aguanta. El tiempo en sistema apenas se mueve — la holgura de las cubas absorbe el flujo.</span></div>
@@ -918,6 +943,7 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
         if(e.isIntersecting){
           cards.forEach(function(x){ x.classList.toggle('on', x===e.target); });
           rng.value=(+e.target.dataset.i)+1; updSim();
+          var ms=document.querySelector('.scrolly .mstep'); if(ms) ms.innerHTML=e.target.innerHTML;
         }
       }); },{rootMargin:'-42% 0px -42% 0px',threshold:0});
       cards.forEach(function(cd){ sio.observe(cd); });

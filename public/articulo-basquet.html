@@ -416,11 +416,18 @@ details.more[open] .cloud .w5{animation-delay:.42s}
 .body.intro .locard{grid-column:2;grid-row:1/span 8;margin-top:0}
 @media(max-width:760px){.body.intro .ficha{display:block}.body.intro .locard{margin-top:24px}}
 @media(prefers-reduced-motion:reduce){.bp-metric,details.more[open] .node,details.more[open] .jcol,details.more[open] .persona{animation:none}}
+.mstep{display:none}
 @media(max-width:900px){
   .scrolly{display:block}
-  .scrolly-fig{position:sticky;top:60px;z-index:2;background:var(--paper);padding:8px 0}
-  .scrolly-steps{padding:6vh 0 18vh;gap:38vh}
-  .stepcard{background:var(--paper);border:1px solid var(--line);border-left:2px solid var(--accent);padding:14px 16px}
+  .scrolly-fig{position:sticky;top:52px;z-index:2;background:var(--paper);padding:8px 0 10px;height:auto;display:block;border-bottom:1px solid var(--line)}
+  .scrolly-fig svg{max-height:32vh!important}
+  .scrolly-fig .fig-cap{display:none}
+  .mstep{display:block;margin-top:10px;border-left:2px solid var(--accent);padding:2px 0 2px 14px;font-size:14.5px;line-height:1.5;color:var(--ink);min-height:72px}
+  .mstep .sk{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);display:block;margin-bottom:4px}
+  .mstep b{color:var(--accent)}
+  .scrolly-steps{padding:4vh 0 12vh;gap:0}
+  .stepcard{height:78vh;margin:0;padding:0;border:0;opacity:0;pointer-events:none}
+  .stepcard .sk{display:none}
 }
 .step .label{letter-spacing:.18em}
 .panelbox{padding:28px 26px}
@@ -463,6 +470,24 @@ details.more[open] .cloud .w5{animation-delay:.42s}
 .toc .dt{width:8px;height:8px;border:1px solid var(--muted);background:transparent;transition:.25s;flex:none}
 .toc a.on .dt{background:var(--accent);border-color:var(--accent)}
 @media(max-width:1180px){.toc{display:none}}
+@media(max-width:680px){
+  .wrap{padding:0 20px}
+  .bp-hero{padding:92px 0 0}
+  .bp-hero h1{font-size:clamp(32px,9.5vw,48px)}
+  .bp-hero .case-dek{font-size:17px}
+  .bp-metrics{margin-top:36px}
+  .top .wrap{gap:10px}
+  .top .wrap>a.home{font-size:14px!important}
+  .top nav{gap:10px!important}
+  .top nav a.home{font-size:10px}
+  .panelbox{overflow-x:auto}
+  .verdict th,.verdict td{font-size:12px;padding:8px 6px}
+  .bp-foot{padding:60px 0 0;margin-top:64px}
+  .bp-foot .rowc .kv{text-align:left!important}
+  .bp-foot .big{font-size:clamp(30px,8.5vw,44px)}
+  .pull blockquote{font-size:clamp(22px,6.8vw,30px)}
+  .bridge p{font-size:19px}
+}
 html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
 .langg{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.08em}
 .langg button{background:none;border:0;cursor:pointer;color:#B8B4A6;font:inherit;padding:2px;text-transform:uppercase;transition:color .15s}
@@ -662,7 +687,7 @@ c-14 18 -25 41 -25 51 0 10 -6 18 -14 18 -8 0 -21 3 -30 6 -10 4 -19 -5 -29
     <div class="scrolly-fig">
       <div class="panelbox"><svg id="focos" viewBox="0 0 720 440" width="100%" role="img" aria-label="Cuadrante de focos de mejora"></svg></div>
       <div class="fig-cap"><span class="i-en"><b>Fig. 06 — Where to put the effort.</b> Vertical: mean score (0–100, distinct from the NPS in Fig. 05). Horizontal: each space&rsquo;s weight in overall satisfaction (β).</span><span class="i-es"><b>Fig. 06 — Dónde poner el esfuerzo.</b> Vertical: nota media (0–100, distinta del NPS de la Fig. 05). Horizontal: peso de cada espacio en la satisfacción general (β).</span></div>
-    </div>
+    <div class="mstep" aria-hidden="true"></div></div>
     <div class="scrolly-steps">
       <div class="stepcard" data-fs="0"><span class="sk"><span class="i-en">01 · the map</span><span class="i-es">01 · el mapa</span></span><span class="i-en">Each dot is a matchday space, placed by its mean score and by how much it weighs on overall satisfaction.</span><span class="i-es">Cada punto es un espacio del matchday, ubicado por su nota media y por cuánto pesa en la satisfacción general.</span></div>
       <div class="stepcard" data-fs="1"><span class="sk"><span class="i-en">02 · the score alone misleads</span><span class="i-es">02 · la nota sola engaña</span></span><span class="i-en">Looking only at satisfaction would say &ldquo;fix the <b style="color:var(--accent)">parking</b>&rdquo; — the red dot. But a low score doesn&rsquo;t always move the needle for the whole day.</span><span class="i-es">Mirar solo la satisfacción diría "arregla el <b style="color:var(--accent)">parking</b>" — el punto rojo. Pero una nota baja no siempre mueve la aguja del día completo.</span></div>
@@ -972,6 +997,7 @@ c-14 18 -25 41 -25 51 0 10 -6 18 -14 18 -8 0 -21 3 -30 6 -10 4 -19 -5 -29
       var fio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){
         fsCards.forEach(function(x){ x.classList.toggle('on', x===e.target); });
         setFS(+e.target.dataset.fs);
+        var ms=document.querySelector('.scrolly .mstep'); if(ms) ms.innerHTML=e.target.innerHTML;
       } }); },{rootMargin:'-42% 0px -42% 0px',threshold:0});
       fsCards.forEach(function(cd){ fio.observe(cd); });
     }
