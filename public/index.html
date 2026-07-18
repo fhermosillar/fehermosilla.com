@@ -183,6 +183,13 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
 .lang button.on{color:var(--accent)}
 .lang button:not(.on):hover{color:var(--on-dark)}
 .lang .sp{color:#3A382E}
+.hero-index{display:none}
+@media(max-width:680px){
+  .hero-index{display:grid;grid-template-columns:1fr 1fr;gap:9px 16px;margin-top:30px;padding-top:16px;border-top:1px solid var(--dark-line);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;position:relative;z-index:1}
+  .hero-index .hix-t{grid-column:1/-1;color:#8C887A;font-size:10px;margin-bottom:2px}
+  .hero-index a{color:var(--on-dark);text-decoration:none;display:flex;gap:9px;align-items:baseline}
+  .hero-index a .n{color:var(--accent);font-size:10px}
+}
 @view-transition{navigation:auto}
 </style>
 </head>
@@ -206,6 +213,15 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
       <div class="role"><b><span class="i-en">Partner Success &amp; RevOps Lead</span><span class="i-es">Líder de Partner Success y RevOps</span></b><br>Coaches&rsquo; Voice</div>
     </div>
   </div>
+  <nav class="hero-index" aria-label="Contents">
+    <span class="hix-t"><span class="i-en">On this page</span><span class="i-es">En esta página</span></span>
+    <a href="#about"><span class="n">01</span><span class="i-en">About</span><span class="i-es">Sobre mí</span></a>
+    <a href="#work"><span class="n">02</span><span class="i-en">Experience</span><span class="i-es">Experiencia</span></a>
+    <a href="#systems"><span class="n">03</span><span class="i-en">Systems</span><span class="i-es">Sistemas</span></a>
+    <a href="#writing"><span class="n">04</span>Research</a>
+    <a href="#stack"><span class="n">05</span>Stack</a>
+    <a href="#contact"><span class="n">06</span><span class="i-en">Contact</span><span class="i-es">Contacto</span></a>
+  </nav>
 </div></header>
 
 <div class="metrics"><div class="wrap">
