@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#17160F"></rect>
+  <g stroke="#3A382E" stroke-width="1" opacity="0.55">
+    <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200"></path>
+    <path d="M100 0V630M300 0V630M500 0V630M700 0V630M900 0V630M1100 0V630"></path>
+  </g>
+  <rect x="0" y="0" width="14" height="630" fill="#EA3D14"></rect>
+  <g font-family="&#39;Space Grotesk&#39;,&#39;Inter&#39;,system-ui,sans-serif" fill="#F4F2EA">
+    <text x="96" y="150" font-size="22" font-family="&#39;JetBrains Mono&#39;,monospace" fill="#EA3D14" letter-spacing="4">PARTNER SUCCESS &amp; REVOPS</text>
+    <text x="92" y="290" font-size="104" font-weight="600" letter-spacing="-3">Felipe Hermosilla</text>
+    <text x="96" y="370" font-size="34" font-weight="400" fill="#B8B4A6">Industrial engineer building the systems behind</text>
+    <text x="96" y="416" font-size="34" font-weight="400" fill="#B8B4A6">70+ partnerships and 1,000+ clubs.</text>
+  </g>
+  <g font-family="&#39;JetBrains Mono&#39;,monospace" font-size="20" fill="#B8B4A6">
+    <text x="96" y="540">fehermosilla.com</text>
+    <text x="1104" y="540" text-anchor="end">Barcelona · LatAm · US · UK</text>
+  </g>
+</svg>
