@@ -6,14 +6,14 @@
 <title>De quejas sueltas a prioridades — Felipe Hermosilla</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="favicon-blueprint.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#F4F2EA; --ink:#17160F; --muted:#6E6A5C; --faint:#9C9683; --line:#D7D2C2;
   --panel:#ECE9DE; --panel-2:#E4E0D2; --grid:#E4E0D2;
-  --accent:#EA3D14; --accent-soft:rgba(234,61,20,.09);
+  --accent:#2F6DB0; --accent-soft:rgba(47,109,176,.09);
   --good:#3B7A56; --good-soft:rgba(59,122,86,.12); --bad:#A6362A;
-  --serif:"Space Grotesk",system-ui,sans-serif;
+  --serif:"Bricolage Grotesque",system-ui,sans-serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --maxw:1160px; --measure:64ch;
@@ -22,18 +22,18 @@
   :root{
     --paper:#17160F; --ink:#F4F2EA; --muted:#A8A290; --faint:#5C584B; --line:#3A382E;
     --panel:#1F1E15; --panel-2:#26241A; --grid:#26241A;
-    --accent:#F0705A; --accent-soft:rgba(240,112,90,.14);
+    --accent:#5B93C7; --accent-soft:rgba(91,147,199,.14);
     --good:#6FB98C; --good-soft:rgba(111,185,140,.16); --bad:#E0796C;
   }
 }
 :root[data-theme="light"]{
   --paper:#F4F2EA; --ink:#17160F; --muted:#6E6A5C; --faint:#9C9683; --line:#D7D2C2;
-  --panel:#ECE9DE; --panel-2:#E4E0D2; --grid:#E4E0D2; --accent:#EA3D14; --accent-soft:rgba(234,61,20,.09);
+  --panel:#ECE9DE; --panel-2:#E4E0D2; --grid:#E4E0D2; --accent:#2F6DB0; --accent-soft:rgba(47,109,176,.09);
   --good:#3B7A56; --good-soft:rgba(59,122,86,.12); --bad:#A6362A;
 }
 :root[data-theme="dark"]{
   --paper:#17160F; --ink:#F4F2EA; --muted:#A8A290; --faint:#5C584B; --line:#3A382E;
-  --panel:#1F1E15; --panel-2:#26241A; --grid:#26241A; --accent:#F0705A; --accent-soft:rgba(240,112,90,.14);
+  --panel:#1F1E15; --panel-2:#26241A; --grid:#26241A; --accent:#5B93C7; --accent-soft:rgba(91,147,199,.14);
   --good:#6FB98C; --good-soft:rgba(111,185,140,.16); --bad:#E0796C;
 }
 *{box-sizing:border-box}
@@ -85,13 +85,13 @@ svg{display:block}
 
 /* case scaffolding */
 .case{padding:110px 0 40px; scroll-margin-top:60px}
-.case--wine{--accent:#EA3D14; --accent-soft:rgba(234,61,20,.09)}
-.case--ball{--accent:#EA3D14; --accent-soft:rgba(234,61,20,.09)}
-:root[data-theme="dark"] .case--wine{--accent:#F0705A; --accent-soft:rgba(240,112,90,.14)}
-:root[data-theme="dark"] .case--ball{--accent:#F0705A; --accent-soft:rgba(240,112,90,.14)}
+.case--wine{--accent:#2F6DB0; --accent-soft:rgba(47,109,176,.09)}
+.case--ball{--accent:#2F6DB0; --accent-soft:rgba(47,109,176,.09)}
+:root[data-theme="dark"] .case--wine{--accent:#5B93C7; --accent-soft:rgba(91,147,199,.14)}
+:root[data-theme="dark"] .case--ball{--accent:#5B93C7; --accent-soft:rgba(91,147,199,.14)}
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .case--wine{--accent:#F0705A; --accent-soft:rgba(240,112,90,.14)}
-  :root:not([data-theme="light"]) .case--ball{--accent:#F0705A; --accent-soft:rgba(240,112,90,.14)}
+  :root:not([data-theme="light"]) .case--wine{--accent:#5B93C7; --accent-soft:rgba(91,147,199,.14)}
+  :root:not([data-theme="light"]) .case--ball{--accent:#5B93C7; --accent-soft:rgba(91,147,199,.14)}
 }
 .case-head{border-top:2px solid var(--ink); padding-top:20px}
 .case-head .cline{display:flex; justify-content:space-between; align-items:baseline; gap:20px; flex-wrap:wrap}
