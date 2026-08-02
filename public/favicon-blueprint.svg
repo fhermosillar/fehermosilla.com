@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" fill="#2F6DB0"></rect>
-  <text x="16" y="22" text-anchor="middle" font-family="&#39;Bricolage Grotesque&#39;,&#39;Inter&#39;,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.5" fill="#F4F2EA">fh</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#2F6DB0" stroke-width="2.8" stroke-linecap="round">
+  <rect x="17" y="15.5" width="9" height="9" fill="#2F6DB0" stroke="none"/>
+  <circle cx="6" cy="11" r="2.3" fill="#2F6DB0"/>
+  <circle cx="6" cy="29" r="2.3" fill="#2F6DB0"/>
+  <path d="M8 11H21V15.5"/>
+  <path d="M8 29H21V24.5"/>
+  <circle cx="35" cy="20" r="2.3" fill="#2F6DB0"/>
+  <path d="M26 20H33"/>
 </svg>

@@ -46,7 +46,7 @@
   .nav{position:fixed;top:0;left:0;right:0;z-index:30;border-bottom:1px solid var(--dark-line);background:var(--ink);color:var(--on-dark)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
   .nav .brand{font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
-  .nav .brand .sq{width:10px;height:10px;background:var(--accent)}
+  .nav .brand .sq{width:22px;height:22px}
   .nav .links{display:flex;gap:26px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#B8B4A6}
   .nav .links a{transition:color .15s}.nav .links a:hover{color:var(--accent)}
   @media(max-width:680px){.nav .links a{display:none}.nav .links{gap:0}.nav .links .lang{margin-left:0}}
@@ -196,7 +196,7 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
 <body>
 
 <nav class="nav"><div class="wrap">
-  <span class="brand"><span class="sq"></span>Felipe Hermosilla</span>
+  <span class="brand"><svg class="sq" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><rect x="17" y="15.5" width="9" height="9" fill="var(--accent)" stroke="none"></rect><circle cx="6" cy="11" r="2.2" fill="currentColor"></circle><circle cx="6" cy="29" r="2.2" fill="currentColor"></circle><path d="M8 11H21V15.5"></path><path d="M8 29H21V24.5"></path><circle cx="35" cy="20" r="2.2" fill="currentColor"></circle><path d="M26 20H33"></path></svg>Felipe Hermosilla</span>
   <span class="links"><a href="#about"><span class="i-en">About</span><span class="i-es">Sobre mí</span></a><a href="#work"><span class="i-en">Experience</span><span class="i-es">Experiencia</span></a><a href="#writing">Research</a><a href="#systems"><span class="i-en">Systems</span><span class="i-es">Sistemas</span></a><a href="#contact"><span class="i-en">Contact</span><span class="i-es">Contacto</span></a><span class="lang" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><span class="sp">/</span><button type="button" data-lang="es">ES</button></span></span>
 </div></nav>
 
@@ -297,7 +297,7 @@ html[lang="en"] .i-es,html[lang="es"] .i-en{display:none!important}
   </div>
 </div></section>
 
-<footer><div class="wrap"><span>&copy; 2026 Felipe Hermosilla</span><span>Space Grotesk · Inter · JetBrains Mono</span></div></footer>
+<footer><div class="wrap"><span>&copy; 2026 Felipe Hermosilla</span><span>Bricolage Grotesque · Inter · JetBrains Mono</span></div></footer>
 
 <script>
 (function(){
